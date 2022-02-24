@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, memo } from "react"
 import PropTypes from 'prop-types'
 
 
@@ -12,11 +12,12 @@ const AddCategory = ({setCategories}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if(inputValue.trim().length > 2){
-      // handleAdd(inputValue)
       setCategories(value => [inputValue, ...value])
       setInputValue('')
     }
   }
+
+  console.log('form')
 
   return(
     <form onSubmit={handleSubmit}>
@@ -33,4 +34,4 @@ AddCategory.propTypes = {
   setCategories: PropTypes.func.isRequired
 }
 
-export default AddCategory
+export default memo(AddCategory)

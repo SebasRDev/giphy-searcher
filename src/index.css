@@ -13,3 +13,30 @@ input{
   outline: none;
   padding: 5px 10px;
 }
+
+.card{
+  align-content: center;
+  border-radius: 6px;
+  border: 1px solid gray;
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 370px;
+}
+
+.card p{
+  padding: 5px;
+  text-align: center;
+}
+
+.card img{
+  width: inherit;
+}
+
+.card-grid{
+  box-sizing: content-box;
+  column-count: 3;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}

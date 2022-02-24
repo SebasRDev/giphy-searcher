@@ -1,34 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { memo} from 'react'
+import { useFetchGifs } from '../hooks/useFetchGifs'
 import GifGridItem from './GifGridItem'
 
 const GifGrid = ({category}) => {
 
-  const [images,setImages] = useState([])
-
-  useEffect(()=>{
-    getgifs()
-  },[])
-
-  const getgifs = async() => {
-    const url = `https://api.giphy.com/v1/gifs/search?q=Rick adn Morty&limit=10&api_key=7Z6ucrPSnk7VvDbPNeUWiIfHqdMDSAfd`
-    const response = await fetch(url)
-    const {data} = await response.json()
-
-    const gifs = data.map(img => {
-      return{
-        id: img.id,
-        title: img.title,
-        url: img.images?.downsized_medium.url
-      }
-    })
-
-    setImages(gifs)  
-  }
-
+  const {data:images, loading} = useFetchGifs( category );
   return (
-    <div>
-      <>
-        <h3>{category}</h3>
+    <>
+      <h3 className='category-title aninate__animated animate__flash'>{category}</h3>
+      { loading && <p>Cargando...</p>}
+      <div className='card-grid'>
         {images.map(img => {
           return(
             <GifGridItem 
@@ -37,9 +18,9 @@ const GifGrid = ({category}) => {
             />
           )
         })}
-      </>
-    </div>
+      </div>
+    </>
   )
 }
 
-export default GifGrid
+export default memo(GifGrid)
