@@ -24,7 +24,7 @@ const GifGrid = ({category}) => {
   )
 }
 
-export default memo(GifGrid)
+export default GifGrid
 
 GifGrid.propTypes = {
   category: PropTypes.string.isRequired
