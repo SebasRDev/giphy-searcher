@@ -1,6 +1,7 @@
 import React, { memo} from 'react'
 import { useFetchGifs } from '../hooks/useFetchGifs'
 import GifGridItem from './GifGridItem'
+import PropTypes from 'prop-types' 
 
 const GifGrid = ({category}) => {
 
@@ -23,4 +24,8 @@ const GifGrid = ({category}) => {
   )
 }
 
-export default memo(GifGrid)
+export default GifGrid
+
+GifGrid.propTypes = {
+  category: PropTypes.string.isRequired
+}

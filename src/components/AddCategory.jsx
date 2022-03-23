@@ -1,5 +1,5 @@
 import { useState, memo } from "react"
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 
 
 const AddCategory = ({setCategories}) => {
@@ -8,7 +8,7 @@ const AddCategory = ({setCategories}) => {
   const handleChange = (e) => {
     setInputValue(e.target.value)
   }
-
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     if(inputValue.trim().length > 2){
@@ -17,10 +17,9 @@ const AddCategory = ({setCategories}) => {
     }
   }
 
-  console.log('form')
-
   return(
     <form onSubmit={handleSubmit}>
+      <p>{inputValue}</p>
       <input 
         type='text'
         value={inputValue}
@@ -34,4 +33,5 @@ AddCategory.propTypes = {
   setCategories: PropTypes.func.isRequired
 }
 
-export default memo(AddCategory)
+// export default memo(AddCategory)
+export default AddCategory
